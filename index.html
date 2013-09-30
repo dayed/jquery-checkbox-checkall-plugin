@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checkbox Toggle</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/docs.css">
+	<link rel="stylesheet" type="text/css" href="./css/pygments-manni.css">
+	<style>
+		body{
+			padding-bottom: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Checkall <small>checkall.js</small></h1>
+				<hr>
+			</div>
+			<div class="col-md-12">
+				<h2>About Checkall</h2>
+				<p>Checkall Js 可以帮助我们快熟的选择一个Form表单中的多选按钮，要使用这个功能，需要引用<code>jQuery.js</code> 和 <code>checkall.js</code>文件</p>
+				<p>
+					<a class="btn btn-primary" href="./js/checkall.js" target="_blank"> 下载 checkall.js</a>
+					<a class="btn btn-primary" href="./js/checkall.js" target="_blank"> 下载 jQuery.js</a>
+				</p>
+			</div>
+			<hr>
+			<div class="col-md-12">
+				<h2>示例</h2>
+				<p>
+					<a href="#" class="btn btn-primary" data-toggle="checkall" data-target="#form1">全选 #1</a>
+					<a href="#" class="btn btn-primary" data-toggle="checkall"  data-target="#form2">全选 #2</a>
+					<a href="#" class="btn btn-primary" data-toggle="checkall"  data-target=".checkbox-toggle-form">全选 #1 #2</a>
+					<a href="#" class="btn btn-primary" data-toggle="checkall">全选 页面上的所有checkbox</a>
+				</p>
+				<h3>#1: 使用checkbox</h3>
+				<p>下面这个例子中，我们用了一个 checkbox 作为全选的按钮，只需要给这个 checkbox 加 <code>data-toggle="checkall"</code> 属性即可</p>
+				<div class="bs-example">
+					<form class="checkbox-toggle-form" id="form1">
+						<table class="table">
+							<thead>
+								<tr>
+									<th><label><input type="checkbox" name="" value="" data-toggle="checkall"></label></th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Username</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="checkbox" name="ids[]" value="1"></td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="ids[]" value="2"></td>
+									<td>Jacob</td>
+									<td>Thornton</td>
+									<td>@fat</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="ids[]" value="3"></td>
+									<td>Larry</td>
+									<td>the Bird</td>
+									<td>@twitter</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+				<div class="highlight">
+					<pre>
+					<code class="html"><span class="nt">&lt;<span class="s">form</span> class="checkbox-toggle-form" id="form1"&gt;</span>
+  <span class="nt">&lt;table class="table"&gt;</span>
+    <span class="nt">&lt;thead&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;</span><span class="nt">&lt;label&gt;</span><span class="nt">&lt;input type="checkbox" <span class="s">data-toggle="checkall"</span>&gt;</span><span class="nt">&lt;/label&gt;</span><span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>First Name<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Last Name<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Username<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/thead&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;td&gt;</span><span class="nt">&lt;input type="checkbox" name="" value=""&gt;</span><span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>Mark<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>Otto<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>@mdo<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="">....</span>
+      <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;<span class="s">/form</span>&gt;</span></code>
+					</pre>
+				</div>
+				<h3>#2: 使用按钮</h3>
+				<p>下面这个例子，我们使用了 a 链接 作为全选按钮，同样添加了一个 <code>data-toggle="checkall"</code> </p>
+				<p>因此，您可以使用任意按钮作为全选按钮，例如 
+					<code>&lt;a&gt;</code>, 
+					<code>&lt;input type="button"&gt; </code>, 
+					<code>&lt;button&gt;</code> 
+					<code>&lt;p&gt;</code>， 
+					<code>&lt;li&gt;</code> 等等。
+				</p>
+				<div class="bs-example">
+					<form class="checkbox-toggle-form" id="form2">
+						<table class="table">
+							<thead>
+								<tr>
+									<th><a href="#" data-toggle="checkall">全选</a></th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Username</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="checkbox" name="ids[]" value="1"></td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="ids[]" value="2"></td>
+									<td>Jacob</td>
+									<td>Thornton</td>
+									<td>@fat</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="ids[]" value="3"></td>
+									<td>Larry</td>
+									<td>the Bird</td>
+									<td>@twitter</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+				<div class="highlight">
+					<pre>
+					<code class="html"><span class="nt">&lt;<span class="s">form</span> class="checkbox-toggle-form" id="form1"&gt;</span>
+  <span class="nt">&lt;table class="table"&gt;</span>
+    <span class="nt">&lt;thead&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;</span><span class="nt">&lt;a href="#" </span><span class="s">data-toggle="checkall"</span><span class="nt">&gt;</span>全选<span class="nt">&lt;/a&gt;</span><span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>First Name<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Last Name<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Username<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/thead&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;td&gt;</span><span class="nt">&lt;input type="checkbox" name="" value=""&gt;</span><span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>Mark<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>Otto<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>@mdo<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="">....</span>
+      <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;<span class="s">/form</span>&gt;</span></code>
+					</pre>
+				</div>
+				<h3>#3: 指定容器</h3>
+				<p>上面两个例子，所有checkbox都在一个form表单中。我们可以不使用 <code>&lt;form&gt;</code> 表单，而是通过 <code>data-target="#div-id"</code> 或者 <code>data-target=".div-class"</code> 的方式指定多选框所在的DOM。</p>
+				<p>下面这个例子中，我们没有使用<code>&lt;form&gt;</code></p>
+				
+				<div class="bs-example">
+					<div class="example3">
+						<table class="table">
+							<thead>
+								<tr>
+									<th><a href="#" data-toggle="checkall" data-target=".example3">全选</a></th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Username</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="checkbox" name="ids[]" value="1"></td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="ids[]" value="2"></td>
+									<td>Jacob</td>
+									<td>Thornton</td>
+									<td>@fat</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="ids[]" value="3"></td>
+									<td>Larry</td>
+									<td>the Bird</td>
+									<td>@twitter</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="highlight">
+					<pre>
+					<code class="html"><span class="nt">&lt;div <span class="s">class="example3"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;table class="table"&gt;</span>
+    <span class="nt">&lt;thead&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;</span><span class="nt">&lt;a href="#" </span><span class="s">data-toggle="checkall" data-target=".example3"</span><span class="nt">&gt;</span>全选<span class="nt">&lt;/a&gt;</span><span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>First Name<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Last Name<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Username<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/thead&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;td&gt;</span><span class="nt">&lt;input type="checkbox" name="" value=""&gt;</span><span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>Mark<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>Otto<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>@mdo<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="">....</span>
+      <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code>
+					</pre>
+				</div>	
+			</div>
+			<hr>
+			<div class="col-md-12">
+				<h2>使用方法</h2>
+				<h3>全选按钮</h3>
+				<p>最简单的调用方法是给全选按钮添加一个 <code>data-toggle="checkall"</code> 的属性，或者是添加一个class<code>class="checkall-toggle"</code>。</p>
+				<p>按钮不仅可以是一个 <code>&lt;input type="checkbox" &gt;</code> 还可以是 <code>&lt;a&gt;</code>, 
+					<code>&lt;input type="button"&gt; </code>, 
+					<code>&lt;button&gt;</code> 
+					<code>&lt;p&gt;</code>， 
+					<code>&lt;li&gt;</code> 等多种元素。
+				</p>
+				<h3>指定目标容器</h3>
+				<p>通过给全选按钮添加<code>data-target</code>属性，指定要全选按钮的目标元素容器，<code>data-target</code> 可以是id，也可以是class。</p>
+				<p>例如：<code>data-target="#form-id"</code> 或者 <code>data-target=".div-class"</code> </p>
+				<h3>通过jQuery调用</h3>
+				<P>
+					可以通过jQuery调用，并通过 设置<code>terget</code>参数指定目标。
+				</P>
+				<div class="highlight">
+					<pre>
+						<code class="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#checkAllButton'</span><span class="p">).</span><span class="nx">checkall</span><span class="p">(</span><span class="p">{</span>
+  <span class="s">target:".example3"</span>
+<span class="p">})</span></code>
+					</pre>
+				</div>
+
+				<p><a href="#" class="btn btn-default btn-primary" id="checkAllButton">全选</a> 前面这个按钮没有写data-toggle属性，直接使用了jQuery调用，代码如下：</p>
+				<div class="highlight">
+					<pre>
+						<code class="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#checkAllButton'</span><span class="p">).</span><span class="nx">checkall</span><span class="p">(</span><span class="p">{</span>
+  <span class="s">target:".example3"</span>
+<span class="p">})</span></code>
+					</pre>
+				</div>
+				<P>如果没有给按钮传递target参数，又没有data-target属性，那么点击按钮后会对页面上所有的checkbox进行操作。就像后面这个按钮。 <a href="#" class="btn btn-default btn-primary" id="checkAllButton2">全选</a></P>
+				<h3>其它</h3>
+				<p>如果全选按钮既不在一个<code>&lt;form&gt;</code>内，又没有指定 <code>data-target=""</code>，那么点击全选按钮时会选取页面上的所有多选框。</p>
+
+			</div>
+
+			<hr>
+			<div class="col-md-12">
+				<h2>版本</h2>
+				<p><a href="./js/checkall-1.0.js">checkall-1.0.js</a></p>
+			</div>
+
+			<hr>
+			<div class="col-md-12">
+				<h2>作者</h2>
+				<p>
+					<a href="http://weibo.com/jamesbook" target="_blank">@建博姓李</a>
+				</p>
+			</div>
+
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="./js/checkall.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#checkAllButton").checkall({target:".example3"});
+
+			$("#checkAllButton2").checkall().click(function(){
+				$(this).toggleClass('btn-primary');
+				console.log('click again');
+			});
+		});
+	</script>
+</body>
+</html>
