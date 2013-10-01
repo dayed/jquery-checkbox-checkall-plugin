@@ -1,8 +1,9 @@
 /* ========================================================================
- * checkall.js v1.0.1
- * @author Jianboo
+ * checkall.js v1.0.0
  * https://github.com/jianboolee/jquery-checkbox-checkall-plugin
  * ========================================================================
+ * @author Jianboo
+ *
  *
  * Licensed under the MIT License;
  * you may not use this file except in compliance with the License.
@@ -12,13 +13,10 @@
  *
  * ======================================================================== */
 
-+function ($){ "use strict";
-
++function ($){
 	// Checkall CLASS DEFINITION
 	// =========================
-
 	var toggle = '[data-toggle=checkall]'
-	var toggleClass= '.checkall-toggle'
 	var Checkall = function(element, options){
 		this.options = options
 		this.$element = $(element)
@@ -31,54 +29,33 @@
 
 		if ($this.is('.disabled, :disabled')) return
 
-		var $target = this.options && this.options.target ? $(this.options.target) : getTarget($this)
+		var $target
+
+		if(this.options && this.options.target && $(this.options.target)) $target = $(this.options.target)
+		else $target = getTarget($this)
+
 		var $checkboxs = $target.find(":checkbox")
+
 		var $checkedbox = $target.find(":checked")
+
+		var isAllChecked = false
+		$checkboxs.length == $checkedbox.length ? isAllChecked=true : isAllChecked=false
 
 		if($this.is("input[type='checkbox']")){
 			$checkboxs.prop("checked",$this.prop("checked"))
 		}
 		else{
-			$checkboxs.prop("checked", $checkboxs.length != $checkedbox.length )
-			return false
+			if(isAllChecked) $checkboxs.prop("checked",false)
+			else $checkboxs.prop("checked",true)
+			return false;
 		}
-	}
-	Checkall.prototype.resetCheckAllButton = function(e){
-		var $this = $(this)
-
-		if ($this.is('.disabled, :disabled')) return
-
-		var $parent = getParent($this)
-
-		var $checkallToggle = $parent.find(toggle)
-		if(!$checkallToggle.length){
-			$parent.find(toggleClass)
-		}
-
-		var $checkboxs = $parent.find(":checkbox").not(toggle).not(toggleClass)
-		var $checkedbox = $parent.find(":checked").not(toggle).not(toggleClass)
-
-		$checkallToggle.prop("checked",$checkboxs.length == $checkedbox.length)
-
-	}
-
-	function getParent($this){
-		var selector = $this.parentsUntil("form").parent()
-
-		if(!selector){
-			selector = $this.parentsUntil(".checkall").parent()
-		}
-
-		var $parent = selector && $(selector)
-
-		return $parent && $parent.length ? $parent : $(document)
 	}
 
 	function getTarget($this){
 		var selector = $this.attr('data-target')
 
 		if(!selector){
-			selector = $this.parentsUntil("form").parent()
+			selector = $this.parentsUntil("form")
 		}
 		var $target = selector && $(selector)
 
@@ -104,6 +81,7 @@
 
 	$.fn.checkall.Constructor = Checkall
 
+
 	// CHECKALL NO CONFLICT
 	// ====================
 
@@ -114,7 +92,7 @@
 
 	$(document)
 		.on('click.bs.checkall', toggle, Checkall.prototype.toggle)
-		.on('click.bs.checkall', toggleClass, Checkall.prototype.toggle)
-		.on('click.bs.checkall', ':checkbox', Checkall.prototype.resetCheckAllButton)
+		.on('click.bs.checkall', '.checkall-toggle', Checkall.prototype.toggle)
 			
+	
 }(window.jQuery);
